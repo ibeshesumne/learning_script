@@ -1,8 +1,0 @@
-yfinance
-streamlit
-numpy
-pandas
-matplotlib
-requests
-
-
