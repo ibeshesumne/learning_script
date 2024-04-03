@@ -1,0 +1,9 @@
+yfinance
+streamlit
+numpy
+pandas
+matplotlib
+requests
+lxml
+parse
+concurrent.futures
