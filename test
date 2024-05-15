@@ -1,0 +1,37 @@
+<?php
+
+/**
+ *  A registry of registered products, modules, adapters, and utilities.
+ */
+class C_Component_Registry
+{
+    static  $_instance = NULL;
+    var     $_meta_info = array(); /* Contains a cached mapping of module_id -> module_info (including the path the module was installed to) */
+    var     $_default_path = NULL;
+    var     $_modules = array();
+    var     $_products = array();
+    var     $_adapters = array();
+    var     $_utilities = array();
+    var     $_module_type_cache = array();
+    var     $_module_type_cache_count = 0;
+
+
+    /**
+     * This is a singleton object
+     */
+    private function __construct()
+    {
+			// Create an autoloader
+			spl_autoload_register(array($this, '_module_autoload'), TRUE);
+    }
+
+
+    /**
+     * Returns a singleton
+     * @return C_Component_Registry()
+     */
+    static function &get_instance()
+    {
+        if (is_null(self::$_instance)) {
+            $klass = get_class();
+            self::$_instance = new $klass();
